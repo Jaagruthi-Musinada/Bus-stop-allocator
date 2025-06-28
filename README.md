@@ -3,7 +3,7 @@
 This project assigns students to their nearest bus stops based on distance.
 
 - Run the logic from `BusStopAllocator.java`
-- Open `index.html` in browser to see a basic form
+- Open `index.html` in a browser to see a basic form
 
 ## 🛠️ Features
 - Distance-based student assignment
