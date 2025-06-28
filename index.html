@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bus Stop Allocator</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f8ff;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      color: #007bff;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 14px;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .output {
+      margin-top: 20px;
+    }
+    .stop {
+      background: #fff;
+      padding: 15px;
+      border-left: 5px solid #007bff;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚌 Bus Stop Allocator</h1>
+
+  <input type="text" id="name" placeholder="Student Name" />
+  <input type="number" id="distance" placeholder="Distance (km)" />
+  <button onclick="assignBusStop()">Assign</button>
+
+  <div class="output">
+    <div class="stop" id="stopA">
+      <h3>🅰️ Stop A (≤ 2 km)</h3>
+      <ul></ul>
+    </div>
+    <div class="stop" id="stopB">
+      <h3>🅱️ Stop B (2 - 4 km)</h3>
+      <ul></ul>
+    </div>
+    <div class="stop" id="stopC">
+      <h3>🅲 Stop C (> 4 km)</h3>
+      <ul></ul>
+    </div>
+  </div>
+
+  <script>
+    function assignBusStop() {
+      const name = document.getElementById('name').value.trim();
+      const distance = parseFloat(document.getElementById('distance').value);
+
+      if (!name || isNaN(distance)) {
+        alert("Please enter a valid name and distance.");
+        return;
+      }
+
+      const li = document.createElement('li');
+      li.textContent = `${name} (Distance: ${distance} km)`;
+
+      if (distance <= 2) {
+        document.querySelector('#stopA ul').appendChild(li);
+      } else if (distance <= 4) {
+        document.querySelector('#stopB ul').appendChild(li);
+      } else {
+        document.querySelector('#stopC ul').appendChild(li);
+      }
+
+      // Clear input
+      document.getElementById('name').value = '';
+      document.getElementById('distance').value = '';
+    }
+  </script>
+
+</body>
+</html>
